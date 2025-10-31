@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Cart">
+  <h1>Your Cart</h1>
+  <p>Items you add will appear here.</p>
+
+  <!-- Stripe placeholder -->
+  <button class="btn" id="stripe-checkout" type="button">Checkout with Stripe</button>
+
+  <!-- PayPal -->
+  <div id="paypal-button-container" style="margin-top:16px;"></div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+  <script>
+    // PayPal Smart Buttons (sandbox)
+    if (window.paypal) {
+      paypal.Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{ amount: { value: "19.00" } }]
+          });
+        },
+        onApprove: (data, actions) => {
+          return actions.order.capture().then(function (details) {
+            alert("Thanks, " + details.payer.name.given_name + "!");
+          });
+        }
+      }).render("#paypal-button-container");
+    }
+
+    // Stripe placeholder - replace with real Stripe Checkout session call
+    const stripeBtn = document.getElementById("stripe-checkout");
+    if (stripeBtn) {
+      stripeBtn.addEventListener("click", () => {
+        alert("Stripe checkout placeholder – add real Stripe session here.");
+      });
+    }
+  </script>
+</BaseLayout>
