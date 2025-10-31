@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Login">
+  <h1>Login / Create Account</h1>
+  <p>This page will connect to <strong>Firebase Authentication</strong> (email + password, and optionally Google) in a future step.</p>
+  <p>For now this is a placeholder form so we can finish the layout and navigation.</p>
+
+  <form style="max-width:400px;margin-top:20px">
+    <label>Email</label><br />
+    <input
+      type="email"
+      name="email"
+      placeholder="you@example.com"
+      style="width:100%;padding:8px;margin:6px 0;border:1px solid #ccc;border-radius:4px"
+    /><br />
+
+    <label>Password</label><br />
+    <input
+      type="password"
+      name="password"
+      placeholder="••••••••"
+      style="width:100%;padding:8px;margin:6px 0;border:1px solid #ccc;border-radius:4px"
+    /><br />
+
+    <button class="btn" type="button">Continue</button>
+  </form>
+
+  <p style="margin-top:12px;font-size:13px;color:#3A5E38;">
+    Later: wire this to Firebase SDK in a small client script.
+  </p>
+</BaseLayout>
