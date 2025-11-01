@@ -162,5 +162,31 @@ body.page {
   object-fit: contain;
 }
 
+/* --- HEADER NAV IMPROVEMENT --- */
+.site-header {
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;              /* more room around logo and menu */
+}
 
+.main-nav {
+  display: flex;
+  gap: 36px;                       /* wider spacing between menu items */
+  align-items: center;
+}
+
+.main-nav a {
+  font-size: 18px;                 /* larger readable font */
+  font-weight: 600;
+  color: #3a5e38;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  padding: 8px 4px;                /* adds subtle vertical balance */
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #2b4829;                  /* darker hover color */
+  transform: scale(1.05);          /* small hover pop */
+}
 
