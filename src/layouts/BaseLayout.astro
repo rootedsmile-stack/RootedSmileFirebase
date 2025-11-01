@@ -1,0 +1,64 @@
+---
+const {
+  title = "Rooted Smile",
+  description = "Earthy, mint-free tooth powder for sensitive mouths",
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="/styles.css?v=21" />
+  </head>
+
+  <body class="page">
+    <!-- Top Bar -->
+    <div class="topbar">
+      Free shipping over $50 · Use code <strong>ZINGFREE10</strong> for 10% off
+    </div>
+
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="nav-left">
+        <a href="/" class="nav-logo">
+          <img src="/logo-placeholder.png?v=21" alt="Rooted Smile Logo" class="logo" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+      </nav>
+      <div class="nav-right">
+        <a href="/login" class="icon-link" aria-label="Login">👤</a>
+        <a href="/cart" class="icon-link" aria-label="Cart">🛒</a>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/contact">Contact Us</a>
+        <a href="/shipping-policy">Shipping Policy</a>
+        <a href="/return-policy">Return Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/faq">FAQ</a>
+        <a href="/about">About Us</a>
+      </div>
+      <p class="fda">
+        These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
+        diagnose, treat, cure, or prevent any disease.
+      </p>
+      <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
+    </footer>
+  </body>
+</html>
