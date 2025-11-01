@@ -109,3 +109,37 @@ body.page {
   max-width: 600px;
   margin: 0 auto 8px;
 }
+/* --- Adjust hero image scaling on desktop --- */
+.hero-media img {
+  max-width: 420px;
+  max-height: 420px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+}
+
+/* --- Narrow hero container and cap desktop layout --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  max-width: 1050px;
+  margin: 28px auto;
+  padding: 0 16px;
+  align-items: center;
+}
+
+/* --- Keep it stacked and centered on mobile --- */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-media img {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+
+
