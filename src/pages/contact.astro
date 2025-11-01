@@ -1,20 +1,9 @@
 ---
-/**
- * TEMP CONTACT PAGE
- * We are simplifying this because Cloudflare build was hanging on contact.astro.
- * After the site is live, we can re-add the layout.
- */
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Contact Us | Rooted Smile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body style="background:#f5f2ea;color:#3a5e38;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;padding:24px;">
+<BaseLayout title="Contact Us | Rooted Smile">
+  <main style="max-width:750px;margin:0 auto;padding:24px 16px;">
     <h1>Contact Us</h1>
-    <p>Email: <strong>hello@rootedsmile.com</strong></p>
-    <p>This is a temporary contact page so the site can deploy.</p>
-  </body>
-</html>
+    <p>Email us at hello@rootedsmile.com</p>
+  </main>
+</BaseLayout>
