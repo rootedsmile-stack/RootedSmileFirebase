@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login | Rooted Smile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="page">
+    <div class="topbar">
+      Free shipping over $50 · Use code <strong>ZINGFREE10</strong> for 10% off
+    </div>
+
+    <header class="site-header">
+      <a href="/login.html">👤</a>
+      <div class="logo-wrap">
+        <img src="/logo-placeholder.png" alt="Rooted Smile" class="logo" />
+      </div>
+      <a href="/cart">🛒</a>
+    </header>
+
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/products">Products</a>
+      <a href="/contact.html">Contact Us</a>
+    </nav>
+
+    <main style="max-width:420px;margin:0 auto;padding:24px 16px;">
+      <h1>Login / Create Account</h1>
+      <p>This will connect to <strong>Firebase Authentication</strong> (email + password, Google) in the next step.</p>
+
+      <form style="margin-top:16px;">
+        <label>Email</label><br />
+        <input
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          style="width:100%;padding:8px;margin:6px 0 14px;border:1px solid #ccc;border-radius:4px"
+        /><br />
+
+        <label>Password</label><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="••••••••"
+          style="width:100%;padding:8px;margin:6px 0 14px;border:1px solid #ccc;border-radius:4px"
+        /><br />
+
+        <button class="btn" type="button">Continue</button>
+      </form>
+
+      <p style="margin-top:20px;font-size:13px;">
+        Later we will load the Firebase SDK in a <code>&lt;script&gt;</code> and wire this form to it.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/contact.html">Contact Us</a>
+        <a href="/shipping-policy.html">Shipping Policy</a>
+        <a href="/return-policy.html">Return Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <p class="fda">
+        These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
+        diagnose, treat, cure, or prevent any disease.
+      </p>
+      <p class="copy">© 2025 Rooted Smile.</p>
+    </footer>
+  </body>
+</html>
