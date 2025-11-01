@@ -1,9 +1,64 @@
----
-import BaseLayout from "../layouts/BaseLayout.astro";
----
-<BaseLayout title="Return Policy">
-  <h1>Return Policy</h1>
-  <p>Because our products are personal care items, all sales are final.</p>
-  <p>If your order arrives damaged or incorrect, contact us within 7 days and we will make it right.</p>
-  <p>Email: <strong>hello@rootedsmile.com</strong></p>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Return Policy | Rooted Smile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="page">
+    <div class="topbar">
+      Free shipping over $50 · Use code <strong>ZINGFREE10</strong> for 10% off
+    </div>
+
+    <header class="site-header">
+      <a href="/login.html">👤</a>
+      <div class="logo-wrap">
+        <img src="/logo-placeholder.png" alt="Rooted Smile" class="logo" />
+      </div>
+      <a href="/cart">🛒</a>
+    </header>
+
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/products/">Products</a>
+      <a href="/contact.html">Contact Us</a>
+    </nav>
+
+    <main style="max-width:700px;margin:0 auto;padding:24px 16px;">
+      <h1>Return & Refund Policy</h1>
+      <p>
+        We make small-batch, natural products. Because these are personal care items, we cannot accept returns of opened
+        products.
+      </p>
+      <h2>Damaged or wrong item</h2>
+      <p>
+        If your order arrived damaged or you received the wrong item, email us within 7 days at
+        <strong>hello@rootedsmile.com</strong> with a photo and order number. We will replace or refund.
+      </p>
+      <h2>Allergies / sensitivities</h2>
+      <p>
+        If you experienced a reaction, please stop using the product immediately and contact us. We can offer a credit
+        or partial refund on a case-by-case basis.
+      </p>
+      <h2>Shipping fees</h2>
+      <p>Shipping fees are not refundable once an order has shipped.</p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="/contact.html">Contact Us</a>
+        <a href="/shipping-policy.html">Shipping Policy</a>
+        <a href="/return-policy.html">Return Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/about.html">About Us</a>
+      </div>
+      <p class="fda">
+        These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
+        diagnose, treat, cure, or prevent any disease.
+      </p>
+      <p class="copy">© 2025 Rooted Smile.</p>
+    </footer>
+  </body>
+</html>
