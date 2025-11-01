@@ -15,20 +15,25 @@ const { title = "Rooted Smile", description = "Earthy, zing-free tooth powder" }
       Free shipping over $50 · Use code <strong>ZINGFREE10</strong> for 10% off
     </div>
 
-    <header class="site-header">
-      <a class="user-link" href="/login.html" aria-label="Login">👤</a>
-      <div class="logo-wrap">
-        <img src="/logo-placeholder.png" alt="Rooted Smile" class="logo" />
-      </div>
-      <a class="cart-link" href="/cart.html" aria-label="Cart">🛒</a>
-    </header>
+  <header class="site-header">
+  <!-- LEFT: main nav -->
+  <nav class="main-nav main-nav--left">
+    <a href="/">Home</a>
+    <a href="/products/">Products</a>
+    <a href="/contact.html">Contact Us</a>
+  </nav>
 
-    <nav class="main-nav">
-      <a href="/">Home</a>
-      <a href="/products/">Products</a>
-      <a href="/contact.html">Contact Us</a>
-    </nav>
+  <!-- CENTER: logo -->
+  <div class="logo-wrap">
+    <img src="/logo-placeholder.png?v=14" alt="Rooted Smile" class="logo" />
+  </div>
 
+  <!-- RIGHT: icons -->
+  <div class="header-actions">
+    <a href="/login.html" class="icon-link" aria-label="Login">👤</a>
+    <a href="/cart.html" class="icon-link" aria-label="Cart">🛒</a>
+  </div>
+</header>
     <main>
       <slot />
     </main>
