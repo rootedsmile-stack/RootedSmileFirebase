@@ -190,3 +190,20 @@ body.page {
   transform: scale(1.05);          /* small hover pop */
 }
 
+/* --- Zoom in the logo --- */
+.logo-wrap .logo {
+  height: 130px !important;  /* bigger logo */
+  max-height: 130px;
+  width: auto;
+  transform: scale(1.1);     /* subtle enlargement effect */
+  transform-origin: center;
+}
+
+/* adjust header spacing so it doesn’t add white space */
+.site-header {
+  padding: 6px 24px 0;
+}
+
+.logo-wrap {
+  margin-bottom: 0;
+}
