@@ -1,25 +1,26 @@
 ---
---- 
-<!DOCTYPE html>
+const { title = "Rooted Smile", description = "Earthy, zing-free tooth powder" } = Astro.props;
+---
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rooted Smile</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="stylesheet" href="/styles.css" />
   </head>
-
-  <body>
+  <body class="page">
     <div class="topbar">
       Free shipping over $50 · Use code <strong>ZINGFREE10</strong> for 10% off
     </div>
 
     <header class="site-header">
-      <a href="/login.html">👤</a>
+      <a class="user-link" href="/login.html" aria-label="Login">👤</a>
       <div class="logo-wrap">
         <img src="/logo-placeholder.png" alt="Rooted Smile" class="logo" />
       </div>
-      <a href="/cart">🛒</a>
+      <a class="cart-link" href="/cart.html" aria-label="Cart">🛒</a>
     </header>
 
     <nav class="main-nav">
@@ -28,7 +29,9 @@
       <a href="/contact.html">Contact Us</a>
     </nav>
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <footer class="site-footer">
       <div class="footer-links">
@@ -43,7 +46,7 @@
         These statements have not been evaluated by the Food and Drug Administration. This product is not intended to
         diagnose, treat, cure, or prevent any disease.
       </p>
-      <p class="copy">© 2025 Rooted Smile.</p>
+      <p class="copy">© {new Date().getFullYear()} Rooted Smile.</p>
     </footer>
   </body>
 </html>
