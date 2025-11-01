@@ -155,5 +155,12 @@ body.page {
   }
 }
 
+.site-header .logo {
+  height: 110px !important;
+  max-height: 110px;
+  width: 110px;
+  object-fit: contain;
+}
+
 
 
