@@ -25,6 +25,20 @@ body.page {
   object-fit: contain;
 }
 
+/* --- Bigger logo on desktop --- */
+@media (min-width: 769px) {
+  .logo {
+    height: 96px;
+  }
+}
+
+/* --- Slightly larger but balanced on mobile --- */
+@media (max-width: 768px) {
+  .logo {
+    height: 72px;
+  }
+}
+
 .main-nav {
   display: flex;
   gap: 18px;
