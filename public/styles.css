@@ -525,3 +525,22 @@ body.page {
 .qty-btn:hover {
   background: #e6e6e1;
 }
+/* Remove button */
+.remove-btn {
+  background: none;
+  border: none;
+  color: #3a5e38;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+.remove-btn:hover {
+  color: #b9a76b;
+  opacity: 0.8;
+}
+
+/* Fade animation for removal */
+.cart-item {
+  transition: opacity 0.4s ease;
+}
