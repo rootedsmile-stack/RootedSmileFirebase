@@ -3,40 +3,45 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Checkout | Rooted Smile">
   <main style="max-width:720px;margin:0 auto;padding:24px 16px;">
-    <h1>How do you want to checkout?</h1>
-    <p style="margin-bottom:20px;">
-      You’re buying: <strong>Rooted Smile Tooth Powder ($38)</strong>
-    </p>
+    <h1 style="margin-bottom:24px;">How do you want to checkout?</h1>
 
     <div style="display:flex;flex-direction:column;gap:14px;max-width:360px;">
-      <!-- we will hook this to Firebase next -->
       <button id="btn-login" class="btn" type="button">
         Sign in / Create account
       </button>
 
-      <!-- we will hook this to Stripe next -->
       <button id="btn-guest" class="btn" type="button" style="background:#124a3b;">
         Checkout as guest
       </button>
     </div>
-
-    <p style="font-size:13px;color:#5d7a5b;margin-top:18px;">
-      We recommend creating an account if you want order history or subscriptions later.
-    </p>
   </main>
 
   <script>
+    // On page load, make sure cart is not empty
     if (typeof window !== "undefined") {
-      const guest = document.getElementById("btn-guest");
-      const login = document.getElementById("btn-login");
+      const existing = JSON.parse(localStorage.getItem("rs_cart") || "[]");
+      const item = {
+        id: "tooth-powder",
+        name: "Rooted Smile Tooth Powder",
+        price: 38,
+        qty: 1,
+      };
 
-      // temporary actions until we wire up Stripe + Firebase
-      guest?.addEventListener("click", () => {
-        alert("Guest checkout will go to Stripe here.");
+      const idx = existing.findIndex((p) => p.id === item.id);
+      if (idx > -1) {
+        existing[idx].qty += 1;
+      } else {
+        existing.push(item);
+      }
+      localStorage.setItem("rs_cart", JSON.stringify(existing));
+
+      // Placeholder actions until Stripe + Firebase are connected
+      document.getElementById("btn-guest")?.addEventListener("click", () => {
+        alert("Guest checkout → Stripe integration will go here.");
       });
 
-      login?.addEventListener("click", () => {
-        alert("Login/signup with Firebase goes here.");
+      document.getElementById("btn-login")?.addEventListener("click", () => {
+        alert("Firebase login/signup integration will go here.");
       });
     }
   </script>
