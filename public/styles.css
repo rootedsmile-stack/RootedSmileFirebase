@@ -377,3 +377,13 @@ body.page {
 .btn-block {
   width: 100%;
 }
+.cart-dot {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 8px;
+  width: 8px;
+  background: #3a5e38; /* same green as your theme */
+  border-radius: 50%;
+  display: none;
+}
