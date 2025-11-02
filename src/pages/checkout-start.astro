@@ -2,57 +2,36 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Checkout | Rooted Smile">
-<main
-  style="
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 16px;
-  "
->
-  <h1 style="color:#3a5e38; margin-bottom: 30px;">How do you want to checkout?</h1>
+  <main
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 16px;
+    "
+  >
+    <h1 style="color:#3a5e38; margin-bottom: 30px;">How do you want to checkout?</h1>
 
-  <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 350px;">
-    <a
-      href="/login"
-      class="btn"
-      style="
-        background: #3a5e38;
-        color: #fff;
-        padding: 12px 0;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 500;
-      "
-    >
-      Sign in / Create account
-    </a>
+    <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 350px;">
+      <button id="btn-login" class="btn" type="button" style="width:100%;">
+        Sign in / Create account
+      </button>
 
-    <a
-      href="/guest-checkout"
-      class="btn"
-      style="
-        background: #1e4f35;
-        color: #fff;
-        padding: 12px 0;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 500;
-      "
-    >
-      Checkout as guest
-    </a>
-  </div>
-</main>
+      <button id="btn-guest" class="btn" type="button" style="background:#124a3b;width:100%;">
+        Checkout as guest
+      </button>
+    </div>
+  </main>
+
   <script>
-    // On page load, make sure cart is not empty
     if (typeof window !== "undefined") {
+      // ensure the cart has the item at this point
       const existing = JSON.parse(localStorage.getItem("rs_cart") || "[]");
       const item = {
-        id: "tooth-powder",
-        name: "Rooted Smile Tooth Powder",
+        id: "toothmagic-powder",
+        name: "Rooted Smile ToothMagic Powder",
         price: 38,
         qty: 1,
       };
@@ -65,13 +44,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       }
       localStorage.setItem("rs_cart", JSON.stringify(existing));
 
-      // Placeholder actions until Stripe + Firebase are connected
       document.getElementById("btn-guest")?.addEventListener("click", () => {
-        alert("Guest checkout → Stripe integration will go here.");
+        alert("Guest checkout → Stripe will go here.");
       });
 
       document.getElementById("btn-login")?.addEventListener("click", () => {
-        alert("Firebase login/signup integration will go here.");
+        alert("Firebase login/signup will go here.");
       });
     }
   </script>
