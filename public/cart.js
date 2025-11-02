@@ -3,7 +3,7 @@
 const CART_KEY = "rs_cart";
 const FREE_SHIP_TARGET = 50; // $50 free shipping
 
-// -------- storage helpers --------
+// ---------- storage helpers ----------
 function getCart() {
   try {
     return JSON.parse(localStorage.getItem(CART_KEY)) || [];
@@ -14,13 +14,13 @@ function getCart() {
 
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  // tell the layout to refresh the dot
+  // let layout/dot/cart listen
   window.dispatchEvent(new Event("cartUpdated"));
   window.dispatchEvent(new Event("itemAddedToCart"));
   renderCart();
 }
 
-// -------- drawer helpers --------
+// ---------- drawer helpers ----------
 function openCartDrawer() {
   const drawer = document.getElementById("cartDrawer");
   const overlay = document.getElementById("cartOverlay");
@@ -35,7 +35,7 @@ function closeCartDrawer() {
   if (overlay) overlay.classList.remove("active");
 }
 
-// -------- add / remove / update --------
+// ---------- add / update / remove ----------
 function addToCart(item) {
   const cart = getCart();
   const existing = cart.find((p) => p.id === item.id);
@@ -51,7 +51,7 @@ function addToCart(item) {
     });
   }
   saveCart(cart);
-  // 👇 auto open on add
+  // auto open on add
   openCartDrawer();
 }
 
@@ -74,7 +74,7 @@ function removeFromCart(id) {
   saveCart(cart);
 }
 
-// -------- render cart drawer --------
+// ---------- render cart drawer ----------
 function renderCart() {
   const container = document.getElementById("cartItems");
   const subtotalEl = document.getElementById("cartSubtotal");
@@ -99,8 +99,9 @@ function renderCart() {
 
   container.innerHTML = cart
     .map((item) => {
+      const itemTotal = ((item.price || 0) * (item.qty || 1)).toFixed(2);
       return `
-        <div class="cart-item">
+        <div class="cart-item" data-id="${item.id}">
           ${
             item.image
               ? `<img src="${item.image}" alt="${item.name}" class="cart-item-img" />`
@@ -117,7 +118,7 @@ function renderCart() {
                 <span class="qty-display">${item.qty || 1}</span>
                 <button class="qty-btn qty-plus" data-id="${item.id}">+</button>
               </div>
-              <span class="cart-item-price">$${((item.price || 0) * (item.qty || 1)).toFixed(2)}</span>
+              <span class="cart-item-price">$${itemTotal}</span>
             </div>
           </div>
         </div>
@@ -125,6 +126,7 @@ function renderCart() {
     })
     .join("");
 
+  // subtotal
   if (subtotalEl) {
     subtotalEl.textContent = "$" + subtotal.toFixed(2);
   }
@@ -134,6 +136,7 @@ function renderCart() {
     if (subtotal >= FREE_SHIP_TARGET) {
       freeShipText.textContent = "You’ve earned free US shipping!";
       freeShipFill.style.width = "100%";
+      freeShipFill.style.backgroundColor = "#3a5e38";
     } else {
       const remaining = FREE_SHIP_TARGET - subtotal;
       freeShipText.textContent = `Spend $${remaining.toFixed(
@@ -141,16 +144,17 @@ function renderCart() {
       )} more to get free shipping`;
       const pct = Math.min(100, Math.round((subtotal / FREE_SHIP_TARGET) * 100));
       freeShipFill.style.width = pct + "%";
+      freeShipFill.style.backgroundColor = "#b9a76b";
     }
   }
 }
 
-// -------- attach handlers --------
+// ---------- attach handlers ----------
 document.addEventListener("DOMContentLoaded", () => {
-  // render on load
+  // initial render
   renderCart();
 
-  // open/close icons
+  // open/close
   const cartIcon = document.getElementById("cart-icon");
   if (cartIcon) {
     cartIcon.addEventListener("click", (e) => {
@@ -169,15 +173,25 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.addEventListener("click", () => closeCartDrawer());
   }
 
-  // delegate clicks inside cart (remove / qty)
+  // delegate clicks inside cart
   const itemsWrap = document.getElementById("cartItems");
   if (itemsWrap) {
     itemsWrap.addEventListener("click", (e) => {
       const target = e.target;
+      // remove
       if (target.matches(".cart-remove")) {
         const id = target.getAttribute("data-id");
-        removeFromCart(id);
+        const row = target.closest(".cart-item");
+        if (row) {
+          row.style.opacity = "0";
+          setTimeout(() => {
+            removeFromCart(id);
+          }, 350);
+        } else {
+          removeFromCart(id);
+        }
       }
+      // increase
       if (target.matches(".qty-plus")) {
         const id = target.getAttribute("data-id");
         const cart = getCart();
@@ -186,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateQty(id, (item.qty || 1) + 1);
         }
       }
+      // decrease
       if (target.matches(".qty-minus")) {
         const id = target.getAttribute("data-id");
         const cart = getCart();
@@ -197,15 +212,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // attach add-to-cart buttons on pages
-  // expects data attributes on button
+  // buttons on page with data-add-to-cart
   document.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-id") || "tooth-powder";
       const name =
         btn.getAttribute("data-name") || "Rooted Smile ToothMagic Powder";
       const price = parseFloat(btn.getAttribute("data-price") || "38");
-      const image = btn.getAttribute("data-image") || "/toothpowder-hero.jpg";
+      const image = btn.getAttribute("data-image") || "/product.png";
 
       addToCart({
         id,
