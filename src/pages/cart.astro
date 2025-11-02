@@ -3,7 +3,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Your Cart | Rooted Smile">
   <main style="max-width:750px;margin:0 auto;padding:24px 16px;">
-    <h1>Your Cart</h1>
-    <p>Your cart is empty right now.</p>
+    <h1>Your cart</h1>
+    <div id="cart-area">
+      <p>Loading your cart…</p>
+    </div>
   </main>
+
+  <script>
+    if (typeof window !== "undefined") {
+      const area = document.getElementById("cart-area");
+      // read what /checkout-start wrote
+      const cart = JSON.parse(localStorage.getItem("rs_cart") || "[]");
+
+      if (!cart.length) {
+        area.innerHTML =
+          "<p>Your cart is empty.</p><p><a href='/products/tooth-powder' style='color:#3a5e38;'>Add tooth powder</a></p>";
+      } else {
+        let total = 0;
+        let html = '<ul style="list-style:none;padding:0;margin-top:16px;">';
+        cart.forEach((item) => {
+          const lineTotal = item.price * item.qty;
+          total += lineTotal;
+          html += `
+            <li style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;background:#fff;padding:10px 14px;border-radius:8px;">
+              <div>
+                <strong>${item.name}</strong><br/>
+                Qty: ${item.qty} × $${item.price.toFixed(2)}
+              </div>
+              <div><strong>$${lineTotal.toFixed(2)}</strong></div>
+            </li>
+          `;
+        });
+        html += "</ul>";
+        html += `<p style="text-align:right;font-weight:600;font-size:18px;margin-top:12px;">Total: $${total.toFixed(
+          2
+        )}</p>`;
+        html += `<a href="/checkout-start" class="btn" style="margin-top:10px;display:inline-block;">Continue to checkout</a>`;
+        area.innerHTML = html;
+      }
+    }
+  </script>
 </BaseLayout>
