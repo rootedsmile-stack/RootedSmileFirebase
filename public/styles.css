@@ -20,11 +20,11 @@ body.page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 6px 20px; /* reduced from 14px */
 }
 
 .logo {
-  height: 48px;
+  height: 56px; /* keep it visible even with less padding */
   object-fit: contain;
 }
 
@@ -44,9 +44,9 @@ body.page {
 
 .main-nav {
   display: flex;
-  gap: 18px;
+  gap: 28px;
   justify-content: center;
-  padding-bottom: 12px;
+  padding: 4px 0 6px; /* reduced top/bottom spacing */
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
