@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function getCart() {
     return JSON.parse(localStorage.getItem(cartKey) || "[]");
   }
-  function saveCart(cart) {
-    localStorage.setItem(cartKey, JSON.stringify(cart));
-    window.dispatchEvent(new Event("cartUpdated")); // trigger dot + subtotal update
-    renderCart();
-  }
-
+ function saveCart(cart) {
+  localStorage.setItem("rs_cart", JSON.stringify(cart));
+  window.dispatchEvent(new Event("cartUpdated"));
+  window.dispatchEvent(new Event("itemAddedToCart")); // 👈 this line is important
+  renderCart();
+}
   /** ➕ Add Item to Cart */
   window.addToCart = function (item) {
     const cart = getCart();
