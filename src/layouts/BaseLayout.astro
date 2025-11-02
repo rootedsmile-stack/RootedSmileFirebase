@@ -64,19 +64,39 @@ const {
       </p>
       <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
     </footer>
+<!-- Cart Drawer -->
 <div id="cartDrawer" class="cart-drawer">
   <div class="cart-drawer-header">
     <h3>Cart</h3>
-    <button id="closeCart">&times;</button>
+    <button id="closeCart" class="cart-close" aria-label="Close cart">&times;</button>
   </div>
-  <div id="cartItems"></div>
+
+  <!-- free shipping bar -->
+  <div class="cart-free-ship">
+    <p id="freeShipText">Free shipping over $50</p>
+    <div class="free-ship-bar">
+      <div id="freeShipFill" class="free-ship-fill"></div>
+    </div>
+  </div>
+
+  <div id="cartItems" class="cart-items">
+    <!-- JS will inject items here -->
+  </div>
+
   <div class="cart-drawer-footer">
-    <p id="cartTotal">Total: $0</p>
-    <button class="btn">Checkout</button>
+    <div class="cart-footer-row">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">$0</span>
+    </div>
+    <button id="checkoutBtn" class="btn btn-block">Checkout</button>
   </div>
 </div>
+
+<!-- overlay -->
 <div id="cartOverlay" class="cart-overlay"></div>
-    <!-- ✅ Cart counter script -->
+
+<!-- cart logic -->
+<script src="/cart.js" defer></script>    <!-- ✅ Cart counter script -->
     <script>
       if (typeof window !== "undefined") {
         function updateCartCount() {
