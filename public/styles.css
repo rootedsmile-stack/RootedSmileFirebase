@@ -1,0 +1,214 @@
+/* 1. Base */
+:root {
+  --bg: #f6f1e7;      /* warm, like Ranavat */
+  --ink: #2f4632;     /* main green */
+  --ink-light: #5d7a5b;
+  --accent: #3a5e38;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --shadow-sm: 0 14px 38px rgba(16, 50, 32, 0.04);
+}
+
+html, body {
+  height: 100%;
+}
+
+body.page {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* 2. Utility container */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* 3. Top bar */
+.topbar {
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+/* 4. Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.01);
+}
+
+.logo {
+  height: 56px;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.main-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14.5px;
+}
+
+/* 5. Hero (home) */
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 38px;
+  align-items: center;
+  margin: 38px auto 0;
+  max-width: 1120px;
+  padding: 0 16px 28px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(32px, 4vw, 40px);
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.hero-copy p {
+  font-size: 15px;
+  color: var(--ink-light);
+  max-width: 480px;
+}
+
+.hero-media img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+/* 6. Buttons */
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: transform 0.1s ease-out;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 7. Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+  margin-top: 28px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 18px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 190px;
+  margin: 0 auto 12px;
+  display: block;
+  border-radius: 14px;
+}
+
+.product-card h2 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.product-card p {
+  margin-top: 0;
+}
+
+/* 8. Footer */
+.site-footer {
+  flex-shrink: 0;
+  background: #fff;
+  padding: 12px 16px 16px;
+  text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.03);
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.fda {
+  font-size: 11.5px;
+  color: var(--ink-light);
+  max-width: 620px;
+  margin: 6px auto 4px;
+}
+
+/* 9. Cart badge */
+#cart-icon {
+  position: relative;
+}
+#cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  padding: 1px 6px 2px;
+  min-width: 16px;
+  text-align: center;
+  display: none;
+}
+
+/* 10. Responsive */
+@media (max-width: 880px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .site-header {
+    flex-wrap: wrap;
+  }
+  .main-nav {
+    gap: 14px;
+  }
+}
