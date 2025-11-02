@@ -1,3 +1,25 @@
+/* Ensure footer sticks to bottom */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let main content expand to fill space */
+main {
+  flex: 1;
+}
+
+/* Footer styling remains clean and centered */
+.site-footer {
+  background-color: #f6f3ec;
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
 /* ----------- Base ----------- */
 body.page {
   background: #f5f2ea;
