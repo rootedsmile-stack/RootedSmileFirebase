@@ -13,27 +13,35 @@ const {
     <meta name="description" content={description} />
     <link rel="stylesheet" href="/styles.css?v=24" />
     <style>
-      /* ✅ Ranavat-style cart dot, placed ON the corner */
-      .cart-dot {
-        position: absolute;
-        top: -4px;
-        right: -4px;
-        height: 9px;
-        width: 9px;
-        border-radius: 50%;
-        border: 1.5px solid #fff; /* to separate from icon */
-        box-shadow: 0 0 2px rgba(0,0,0,0.15);
-        display: none;
-        opacity: 0;
-        transition: background-color 0.4s ease, opacity 0.4s ease, transform 0.25s ease;
-      }
-      .cart-dot.show {
-        display: inline-block;
-        opacity: 1;
-        transform: scale(1);
-      }
-    </style>
-  </head>
+  /* ✨ Elegant, minimal cart dot — small, balanced, and aligned */
+  .cart-dot {
+    position: absolute;
+    top: -3px;
+    right: -2px;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: #3a5e38;
+    border: 1px solid #fff;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.4s ease;
+  }
+
+  .cart-dot.show {
+    display: inline-block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* subtle hover effect for polish */
+  .cart-icon:hover .cart-dot {
+    transform: scale(1.1);
+  }
+</style>
+</head>
 
   <body class="page">
     <!-- Top Bar -->
