@@ -2,20 +2,50 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Checkout | Rooted Smile">
-  <main style="max-width:720px;margin:0 auto;padding:24px 16px;">
-    <h1 style="margin-bottom:24px;">How do you want to checkout?</h1>
+<main
+  style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 16px;
+  "
+>
+  <h1 style="color:#3a5e38; margin-bottom: 30px;">How do you want to checkout?</h1>
 
-    <div style="display:flex;flex-direction:column;gap:14px;max-width:360px;">
-      <button id="btn-login" class="btn" type="button">
-        Sign in / Create account
-      </button>
+  <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 350px;">
+    <a
+      href="/login"
+      class="btn"
+      style="
+        background: #3a5e38;
+        color: #fff;
+        padding: 12px 0;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 500;
+      "
+    >
+      Sign in / Create account
+    </a>
 
-      <button id="btn-guest" class="btn" type="button" style="background:#124a3b;">
-        Checkout as guest
-      </button>
-    </div>
-  </main>
-
+    <a
+      href="/guest-checkout"
+      class="btn"
+      style="
+        background: #1e4f35;
+        color: #fff;
+        padding: 12px 0;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 500;
+      "
+    >
+      Checkout as guest
+    </a>
+  </div>
+</main>
   <script>
     // On page load, make sure cart is not empty
     if (typeof window !== "undefined") {
