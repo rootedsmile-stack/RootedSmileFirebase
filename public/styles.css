@@ -379,11 +379,19 @@ body.page {
 }
 .cart-dot {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 8px;
-  width: 8px;
-  background: #3a5e38; /* same green as your theme */
+  top: -3px;
+  right: -3px;
+  height: 9px;
+  width: 9px;
   border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 2px rgba(0,0,0,0.15);
   display: none;
+  opacity: 0;
+  transition: background-color 0.4s ease, opacity 0.4s ease, transform 0.3s ease;
+}
+.cart-dot.show {
+  display: inline-block;
+  opacity: 1;
+  transform: scale(1);
 }
