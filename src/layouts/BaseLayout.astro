@@ -11,7 +11,25 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href="/styles.css?v=21" />
+    <link rel="stylesheet" href="/styles.css?v=22" />
+    <style>
+      /* ✅ Ranavat-style dot on cart icon */
+      .cart-dot {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 8px;
+        width: 8px;
+        background: #3a5e38; /* theme green */
+        border-radius: 50%;
+        display: none;
+        transition: opacity 0.3s ease;
+      }
+      .cart-dot.show {
+        display: inline-block;
+        opacity: 1;
+      }
+    </style>
   </head>
 
   <body class="page">
@@ -24,23 +42,25 @@ const {
     <header class="site-header">
       <div class="nav-left">
         <a href="/" class="nav-logo">
-          <img src="/logo-placeholder.png?v=21" alt="Rooted Smile Logo" class="logo" />
+          <img src="/logo-placeholder.png?v=22" alt="Rooted Smile Logo" class="logo" />
         </a>
       </div>
+
       <nav class="main-nav">
         <a href="/">Home</a>
         <a href="/products">Products</a>
         <a href="/contact">Contact</a>
         <a href="/about">About</a>
       </nav>
+
       <div style="display:flex;align-items:center;gap:14px;">
         <a href="/login" aria-label="Account">
           <img src="/icons/user-icon.svg" alt="User" style="height:26px;width:26px;" />
         </a>
-        <!-- ✅ give it BOTH id and class -->
         <a href="/cart" id="cart-icon" class="cart-icon" aria-label="Cart" style="position:relative;">
           <img src="/icons/cart-icon.svg" alt="Cart" style="height:26px;width:26px;" />
-          <span id="cart-count"></span>
+          <!-- ✅ Replaced count with dot -->
+          <span id="cart-dot" class="cart-dot"></span>
         </a>
       </div>
     </header>
@@ -67,14 +87,14 @@ const {
       <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
     </footer>
 
-    <!-- ✅ Cart Drawer -->
+    <!-- Cart Drawer -->
     <div id="cartDrawer" class="cart-drawer">
       <div class="cart-drawer-header">
         <h3>Cart</h3>
         <button id="closeCart" class="cart-close" aria-label="Close cart">&times;</button>
       </div>
 
-      <!-- free shipping bar -->
+      <!-- Free Shipping Bar -->
       <div class="cart-free-ship">
         <p id="freeShipText">Free shipping over $50</p>
         <div class="free-ship-bar">
@@ -95,31 +115,26 @@ const {
       </div>
     </div>
 
-    <!-- overlay -->
+    <!-- Overlay -->
     <div id="cartOverlay" class="cart-overlay"></div>
 
-    <!-- ✅ main cart logic -->
+    <!-- ✅ Main Cart Logic -->
     <script src="/cart.js" defer></script>
 
-    <!-- ✅ little helper to refresh cart count on load -->
+    <!-- ✅ Cart Dot Update Script -->
     <script>
       if (typeof window !== "undefined") {
-        function updateCartCount() {
+        function updateCartDot() {
           const cart = JSON.parse(localStorage.getItem("rs_cart") || "[]");
-          const totalQty = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
-          const badge = document.getElementById("cart-count");
-          if (badge) {
-            if (totalQty > 0) {
-              badge.style.display = "inline-block";
-              badge.textContent = totalQty;
-            } else {
-              badge.style.display = "none";
-            }
+          const hasItems = cart.some(item => (item.qty || 0) > 0);
+          const dot = document.getElementById("cart-dot");
+          if (dot) {
+            dot.style.display = hasItems ? "inline-block" : "none";
           }
         }
-        updateCartCount();
-        window.addEventListener("storage", updateCartCount);
-        window.addEventListener("cartUpdated", updateCartCount);
+        updateCartDot();
+        window.addEventListener("storage", updateCartDot);
+        window.addEventListener("cartUpdated", updateCartDot);
       }
     </script>
   </body>
