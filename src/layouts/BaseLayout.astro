@@ -11,19 +11,19 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href="/styles.css?v=22" />
+    <link rel="stylesheet" href="/styles.css?v=23" />
     <style>
-      /* ✅ Ranavat-style dot on cart icon */
+      /* ✅ Elegant Ranavat-style cart dot */
       .cart-dot {
         position: absolute;
         top: 0px;
         right: 0px;
         height: 8px;
         width: 8px;
-        background: #3a5e38; /* theme green */
         border-radius: 50%;
         display: none;
-        transition: opacity 0.3s ease;
+        opacity: 0;
+        transition: background-color 0.4s ease, opacity 0.4s ease;
       }
       .cart-dot.show {
         display: inline-block;
@@ -42,7 +42,7 @@ const {
     <header class="site-header">
       <div class="nav-left">
         <a href="/" class="nav-logo">
-          <img src="/logo-placeholder.png?v=22" alt="Rooted Smile Logo" class="logo" />
+          <img src="/logo-placeholder.png?v=23" alt="Rooted Smile Logo" class="logo" />
         </a>
       </div>
 
@@ -59,7 +59,6 @@ const {
         </a>
         <a href="/cart" id="cart-icon" class="cart-icon" aria-label="Cart" style="position:relative;">
           <img src="/icons/cart-icon.svg" alt="Cart" style="height:26px;width:26px;" />
-          <!-- ✅ Replaced count with dot -->
           <span id="cart-dot" class="cart-dot"></span>
         </a>
       </div>
@@ -126,12 +125,19 @@ const {
       if (typeof window !== "undefined") {
         function updateCartDot() {
           const cart = JSON.parse(localStorage.getItem("rs_cart") || "[]");
+          const subtotal = cart.reduce((sum, item) => sum + (item.price || 0) * (item.qty || 1), 0);
           const hasItems = cart.some(item => (item.qty || 0) > 0);
           const dot = document.getElementById("cart-dot");
           if (dot) {
-            dot.style.display = hasItems ? "inline-block" : "none";
+            if (hasItems) {
+              dot.classList.add("show");
+              dot.style.backgroundColor = subtotal >= 50 ? "#b9a76b" : "#3a5e38";
+            } else {
+              dot.classList.remove("show");
+            }
           }
         }
+
         updateCartDot();
         window.addEventListener("storage", updateCartDot);
         window.addEventListener("cartUpdated", updateCartDot);
