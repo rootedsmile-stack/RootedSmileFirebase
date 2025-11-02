@@ -137,7 +137,31 @@ body.page {
   max-width: 200px;
   border-radius: 12px;
 }
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #3a5e38;          /* Rooted Smile green */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
 
+.btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* make sure visited links in hero don’t turn purple */
+.hero a,
+.hero a:visited {
+  color: #fff;
+  text-decoration: none;
+}
 /* ----------- Footer ----------- */
 .site-footer {
   background: #fff;
