@@ -64,6 +64,18 @@ const {
       </p>
       <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
     </footer>
+<div id="cartDrawer" class="cart-drawer">
+  <div class="cart-drawer-header">
+    <h3>Cart</h3>
+    <button id="closeCart">&times;</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-drawer-footer">
+    <p id="cartTotal">Total: $0</p>
+    <button class="btn">Checkout</button>
+  </div>
+</div>
+<div id="cartOverlay" class="cart-overlay"></div>
     <!-- ✅ Cart counter script -->
     <script>
       if (typeof window !== "undefined") {
