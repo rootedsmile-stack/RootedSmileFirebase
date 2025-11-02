@@ -60,5 +60,28 @@ const {
       </p>
       <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
     </footer>
-  </body>
+    <!-- ✅ Cart counter script -->
+    <script>
+      if (typeof window !== "undefined") {
+        function updateCartCount() {
+          const cart = JSON.parse(localStorage.getItem("rs_cart") || "[]");
+          const totalQty = cart.reduce((sum, item) => sum + (item.qty || 0), 0);
+          const badge = document.getElementById("cart-count");
+          if (badge) {
+            if (totalQty > 0) {
+              badge.style.display = "inline-block";
+              badge.textContent = totalQty;
+            } else {
+              badge.style.display = "none";
+            }
+          }
+        }
+
+        updateCartCount();
+        window.addEventListener("storage", updateCartCount);
+        window.addEventListener("cartUpdated", updateCartCount);
+      }
+    </script>
+</body>
+
 </html>
