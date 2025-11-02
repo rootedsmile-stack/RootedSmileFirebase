@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
+
 <BaseLayout
   title="Rooted Smile ToothMagic Powder"
   description="Earthy, mint-free tooth powder. Use at night after dinner and wipe sink to avoid natural staining."
@@ -9,11 +10,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     style="max-width:1050px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:1fr 1fr;gap:24px;"
   >
     <div>
-      <img src="/product.png" alt="Rooted Smile ToothMagic Powder" style="max-width:100%;border-radius:14px;" />
+      <img
+        src="/product.png"
+        alt="Rooted Smile ToothMagic Powder"
+        style="max-width:100%;border-radius:14px;"
+      />
     </div>
+
     <div>
       <h1>Rooted Smile ToothMagic Powder</h1>
-      <p>Our original, earthy, mint-free blend — made for people who can’t tolerate strong minty pastes.</p>
+      <p>
+        Our original, earthy, mint-free blend — made for people who can’t tolerate
+        strong minty pastes.
+      </p>
       <ul>
         <li>Use a clean spoon — do not dip toothbrush into jar</li>
         <li>Put powder on palm or plate, then dip toothbrush</li>
@@ -22,7 +31,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
         <li>Wipe or rinse sink to avoid staining</li>
       </ul>
       <p><strong>$38.00</strong></p>
-<a class="btn" href="/checkout-start">Add to cart</a>
+
+      <!-- ✅ Real Add to Cart Button -->
+      <button
+        class="btn"
+        data-add-to-cart
+        data-id="tooth-powder"
+        data-name="Rooted Smile ToothMagic Powder"
+        data-price="38"
+        data-image="/product.png"
+        style="margin-top:16px;"
+      >
+        Add to cart
+      </button>
     </div>
   </main>
 </BaseLayout>
