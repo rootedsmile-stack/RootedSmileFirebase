@@ -33,15 +33,17 @@ const {
         <a href="/contact">Contact</a>
         <a href="/about">About</a>
       </nav>
-<div style="display:flex;align-items:center;gap:14px;">
-  <a href="/login" aria-label="Account">
-    <img src="/icons/user-icon.svg" alt="User" style="height:26px;width:26px;" />
-  </a>
-  <a href="/cart" id="cart-icon" aria-label="Cart" style="position:relative;">
-    <img src="/icons/cart-icon.svg" alt="Cart" style="height:26px;width:26px;" />
-    <span id="cart-count"></span>
-  </a>
-</div>    </header>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="/login" aria-label="Account">
+          <img src="/icons/user-icon.svg" alt="User" style="height:26px;width:26px;" />
+        </a>
+        <!-- ✅ give it BOTH id and class -->
+        <a href="/cart" id="cart-icon" class="cart-icon" aria-label="Cart" style="position:relative;">
+          <img src="/icons/cart-icon.svg" alt="Cart" style="height:26px;width:26px;" />
+          <span id="cart-count"></span>
+        </a>
+      </div>
+    </header>
 
     <!-- Page Content -->
     <main>
@@ -64,39 +66,42 @@ const {
       </p>
       <p class="copy">© {new Date().getFullYear()} Rooted Smile</p>
     </footer>
-<!-- Cart Drawer -->
-<div id="cartDrawer" class="cart-drawer">
-  <div class="cart-drawer-header">
-    <h3>Cart</h3>
-    <button id="closeCart" class="cart-close" aria-label="Close cart">&times;</button>
-  </div>
 
-  <!-- free shipping bar -->
-  <div class="cart-free-ship">
-    <p id="freeShipText">Free shipping over $50</p>
-    <div class="free-ship-bar">
-      <div id="freeShipFill" class="free-ship-fill"></div>
+    <!-- ✅ Cart Drawer -->
+    <div id="cartDrawer" class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>Cart</h3>
+        <button id="closeCart" class="cart-close" aria-label="Close cart">&times;</button>
+      </div>
+
+      <!-- free shipping bar -->
+      <div class="cart-free-ship">
+        <p id="freeShipText">Free shipping over $50</p>
+        <div class="free-ship-bar">
+          <div id="freeShipFill" class="free-ship-fill"></div>
+        </div>
+      </div>
+
+      <div id="cartItems" class="cart-items">
+        <!-- JS will inject items here -->
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="cart-footer-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0</span>
+        </div>
+        <button id="checkoutBtn" class="btn btn-block">Checkout</button>
+      </div>
     </div>
-  </div>
 
-  <div id="cartItems" class="cart-items">
-    <!-- JS will inject items here -->
-  </div>
+    <!-- overlay -->
+    <div id="cartOverlay" class="cart-overlay"></div>
 
-  <div class="cart-drawer-footer">
-    <div class="cart-footer-row">
-      <span>Subtotal</span>
-      <span id="cartSubtotal">$0</span>
-    </div>
-    <button id="checkoutBtn" class="btn btn-block">Checkout</button>
-  </div>
-</div>
+    <!-- ✅ main cart logic -->
+    <script src="/cart.js" defer></script>
 
-<!-- overlay -->
-<div id="cartOverlay" class="cart-overlay"></div>
-
-<!-- cart logic -->
-<script src="/cart.js" defer></script>    <!-- ✅ Cart counter script -->
+    <!-- ✅ little helper to refresh cart count on load -->
     <script>
       if (typeof window !== "undefined") {
         function updateCartCount() {
@@ -112,28 +117,10 @@ const {
             }
           }
         }
-
         updateCartCount();
         window.addEventListener("storage", updateCartCount);
         window.addEventListener("cartUpdated", updateCartCount);
       }
     </script>
-<script>
-document.querySelector('.cart-icon')?.addEventListener('click', () => {
-  document.getElementById('cartDrawer').classList.add('open');
-  document.getElementById('cartOverlay').classList.add('active');
-});
-
-document.getElementById('closeCart')?.addEventListener('click', () => {
-  document.getElementById('cartDrawer').classList.remove('open');
-  document.getElementById('cartOverlay').classList.remove('active');
-});
-
-document.getElementById('cartOverlay')?.addEventListener('click', () => {
-  document.getElementById('cartDrawer').classList.remove('open');
-  document.getElementById('cartOverlay').classList.remove('active');
-});
-</script>
-</body>
-
+  </body>
 </html>
