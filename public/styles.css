@@ -1,56 +1,35 @@
-/* 1. Base */
-:root {
-  --bg: #f6f1e7;      /* warm, like Ranavat */
-  --ink: #2f4632;     /* main green */
-  --ink-light: #5d7a5b;
-  --accent: #3a5e38;
-  --radius-lg: 18px;
-  --radius-md: 14px;
-  --shadow-sm: 0 14px 38px rgba(16, 50, 32, 0.04);
-}
-
-html, body {
-  height: 100%;
-}
-
+/* ----------- Base ----------- */
 body.page {
-  background: var(--bg);
-  color: var(--ink);
+  background: #f5f2ea;
+  color: #3a5e38;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  display: flex;
-  flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
-}
-
-/* 2. Utility container */
+/* Utility container to align content */
 .container {
-  max-width: 1120px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-/* 3. Top bar */
+/* ----------- Top Bar ----------- */
 .topbar {
-  background: var(--accent);
+  background: #3a5e38;
   color: #fff;
   text-align: center;
   padding: 6px 10px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-/* 4. Header */
+/* ----------- Header ----------- */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 10px 16px;
+  padding: 10px 16px 6px;
   background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.01);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .logo {
@@ -60,155 +39,131 @@ main {
 
 .main-nav {
   display: flex;
-  gap: 22px;
-  align-items: center;
+  gap: 18px;
+  justify-content: center;
+  padding-bottom: 8px;
 }
 
 .main-nav a {
-  color: var(--ink);
+  color: #3a5e38;
   text-decoration: none;
   font-weight: 500;
   font-size: 14.5px;
+  letter-spacing: 0.01em;
 }
 
-/* 5. Hero (home) */
-.hero {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 38px;
-  align-items: center;
-  margin: 38px auto 0;
-  max-width: 1120px;
-  padding: 0 16px 28px;
-}
-
-.hero-copy h1 {
-  font-size: clamp(32px, 4vw, 40px);
-  letter-spacing: -0.01em;
-  margin-bottom: 14px;
-}
-
-.hero-copy p {
-  font-size: 15px;
-  color: var(--ink-light);
-  max-width: 480px;
-}
-
-.hero-media img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-  background: #fff;
-}
-
-/* 6. Buttons */
-.btn {
-  display: inline-block;
-  background: var(--ink);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 14px;
-  transition: transform 0.1s ease-out;
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-/* 7. Product grid */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 26px;
-  margin-top: 28px;
-}
-
-.product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 18px 18px 20px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-}
-
-.product-card img {
-  width: 100%;
-  max-width: 190px;
-  margin: 0 auto 12px;
-  display: block;
-  border-radius: 14px;
-}
-
-.product-card h2 {
-  font-size: 17px;
-  margin-bottom: 6px;
-}
-
-.product-card p {
-  margin-top: 0;
-}
-
-/* 8. Footer */
-.site-footer {
-  flex-shrink: 0;
-  background: #fff;
-  padding: 12px 16px 16px;
-  text-align: center;
-  border-top: 1px solid rgba(0,0,0,0.03);
-  font-size: 13px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-
-.footer-links a {
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.fda {
-  font-size: 11.5px;
-  color: var(--ink-light);
-  max-width: 620px;
-  margin: 6px auto 4px;
-}
-
-/* 9. Cart badge */
+/* Cart icon and count badge */
 #cart-icon {
   position: relative;
 }
+
 #cart-count {
   position: absolute;
   top: -6px;
   right: -10px;
-  background: var(--accent);
+  background: #3a5e38;
   color: #fff;
   border-radius: 50%;
   font-size: 11px;
-  padding: 1px 6px 2px;
+  padding: 1px 5px;
   min-width: 16px;
   text-align: center;
   display: none;
 }
 
-/* 10. Responsive */
+/* ----------- Hero Section ----------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+  align-items: center;
+}
+
+.hero-media img {
+  max-width: 100%;
+  border-radius: 18px;
+  background: #fefefe;
+}
+
+.btn {
+  display: inline-block;
+  background: #3a5e38;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  margin-top: 14px;
+}
+
+/* ----------- Features / Product Cards ----------- */
+.feature-grid,
+.product-grid {
+  max-width: 1100px;
+  margin: 24px auto 40px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.feature,
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(58, 94, 56, 0.08);
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 200px;
+  border-radius: 12px;
+}
+
+/* ----------- Footer ----------- */
+.site-footer {
+  background: #fff;
+  padding: 14px 16px 18px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  color: #3a5e38;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.fda {
+  font-size: 12px;
+  color: #5d7a5b;
+  max-width: 600px;
+  margin: 4px auto 6px;
+}
+
+/* ----------- Responsive ----------- */
 @media (max-width: 880px) {
   .hero {
     grid-template-columns: 1fr;
+    text-align: center;
   }
-  .site-header {
-    flex-wrap: wrap;
+  .hero-media {
+    order: -1;
   }
   .main-nav {
-    gap: 14px;
+    gap: 12px;
   }
 }
