@@ -98,6 +98,22 @@ const {
         window.addEventListener("cartUpdated", updateCartCount);
       }
     </script>
+<script>
+document.querySelector('.cart-icon')?.addEventListener('click', () => {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('active');
+});
+
+document.getElementById('closeCart')?.addEventListener('click', () => {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('active');
+});
+
+document.getElementById('cartOverlay')?.addEventListener('click', () => {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('active');
+});
+</script>
 </body>
 
 </html>
