@@ -362,3 +362,46 @@ body.page {
   }
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  flex-shrink: 0;
+  background: #fff;
+  padding: 10px 16px 14px;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #3a5e38;
+}
+
+.footer-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  color: #3a5e38;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.fda {
+  font-size: 11.5px;
+  color: #5d7a5b;
+  max-width: 600px;
+  margin: 6px auto 4px;
+}
